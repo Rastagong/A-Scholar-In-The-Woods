@@ -1,4 +1,4 @@
-# -*-coding:iso-8859-1 -*
+# -*-coding:utf-8 -*
 import pygame
 from sys import  stderr
 from pygame.locals import *
@@ -7,7 +7,7 @@ from pygame.locals import *
 BUILDING_LOCAL = True #Doit valoir <True> si le Narro Engine est utilisé en local, et qu'il ne se trouve pas dans le PYTHONPATH
 NARRO_ENGINE_PATH = "../../" #Dossier dans lequel doit se trouver le package narro quand on est en local (il est ajouté au PYTHONPATH)
 
-NOM_CARTE_LANCEMENT = "LD26-Ferme"
+NOM_CARTE_LANCEMENT = "LD26-Foret"
 DOSSIER_RESSOURCES = "Ressources/"
 
 FENETRE = dict()
@@ -18,4 +18,11 @@ FENETRE["largeurFenetre"] = 384
 FENETRE["largeurFenetreReelle"] = 416
 FENETRE["couleurFenetre"] = (0,0,0) ##Couleur de fond de la fenêtre (hors zones spéciales comme tileset, outils...)
 FENETRE["titreFenetre"] = "A Scholar In The Woods"
-FENETRE["flagsFenetre"] = pygame.DOUBLEBUF#|pygame.FULLSCREEN|pygame.HWSURFACE
+FENETRE["flagsFenetre"] = 0#DOUBLEBUF#|FULLSCREEN|HWSURFACE
+FENETRE["forceDirectX"] = False
+
+
+FREQUENCE_DEPLACEMENT_JOUEUR_PAR_DEFAUT =  16
+DUREE_DEPLACEMENT_JOUEUR_PAR_DEFAUT = 1
+NOMBRE_MAX_DE_FPS = 60
+

@@ -1,8 +1,8 @@
 # -*-coding:iso-8859-1 -*
+import sys
 from constantes import *
-from sys import path as syspath
 if BUILDING_LOCAL:
-    syspath.append(NARRO_ENGINE_PATH)
+    sys.path.append(NARRO_ENGINE_PATH)
 from narro.main import *
 from narro.constantes import *
 from gestionnaireEvenements import *

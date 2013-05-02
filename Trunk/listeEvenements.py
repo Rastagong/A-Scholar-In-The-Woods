@@ -1,4 +1,4 @@
-# -*-coding:iso-8859-1 -*
+# -*-coding:utf-8 -*
 from constantes import *
 from sys import path as syspath
 if BUILDING_LOCAL:
@@ -75,7 +75,7 @@ class Narrateur(Evenement):
             if self._etape == 1:
                 self._boiteOutils.ajouterPensee("Hurry up, country girl. I can't stand the wilderness.")
                 self._boiteOutils.ajouterPensee("Neither your tastes, for that matter. Ever heard of minimalism?")
-                self._boiteOutils.ajouterPensee("Of course you haven't… Your \"traditional\" works of art are far poorer.")
+                self._boiteOutils.ajouterPensee("Of course you haven't... Your \"traditional\" works of art are far poorer.")
                 self._boiteOutils.ajouterPensee("Your songs, dances and farces… They're so meaningless. So childish.")
                 self._boiteOutils.ajouterPensee("I truly pity you. I couldn't live without true art, without minimalism.")
                 self._boiteOutils.ajouterPensee("At the capital, our artists are highly regarded. Their thoughts are profound.")

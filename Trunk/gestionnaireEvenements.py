@@ -1,4 +1,4 @@
-# -*-coding:iso-8859-1 -*
+# -*-coding:utf-8 -*
 from constantes import *
 from sys import path as syspath
 if BUILDING_LOCAL:
@@ -20,8 +20,8 @@ class MonGestionnaireEvenements(GestionnaireEvenements):
         self._evenements["concrets"]["LD26-Ferme"] = OrderedDict()
         self._evenements["concrets"]["LD26-Foret"] = OrderedDict()
         self._evenements["concrets"]["LD26-Fin"] = OrderedDict()
-        self._evenements["concrets"]["LD26-Ferme"]["Joueur"] = [ Joueur(self._jeu, self, 15, 10, 2, fichier="Anna.png"), (12, 24), "Bas"]
-        #self._evenements["concrets"]["LD26-Foret"]["Joueur"] = [ Joueur(self._jeu, self, 38, 1, 2, fichier="Anna.png"), (38,1), "Bas"]
+        #self._evenements["concrets"]["LD26-Ferme"]["Joueur"] = [ Joueur(self._jeu, self, 15, 10, 2, fichier="Anna.png"), (12, 24), "Bas"]
+        self._evenements["concrets"]["LD26-Foret"]["Joueur"] = [ Joueur(self._jeu, self, 0, 45, 2, fichier="Anna.png"), (38,1), "Bas"]
         #self._evenements["concrets"]["LD26-Fin"]["Joueur"] = [ Joueur(self._jeu, self, 0, 16, 2, fichier="Anna.png"), (0, 16), "Droite"]
         j, self._positionJoueur = self._jeu.joueur, None
         self._xJoueur, self._yJoueur, self._cJoueur, self._directionJoueur, self._appuiValidationJoueur = j.x/32, j.y/32, j.c, j.direction, j.appuiValidation
