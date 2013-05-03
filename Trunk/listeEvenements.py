@@ -187,10 +187,10 @@ class FleurRouge(EvenementConcret):
 class Mere(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 13, 9, 2
-        fichier, couleurTransparente, persoCharset, dureeDeplacement = "Mother.png", (0,0,0), (0,0), 300
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Mother.png", (0,0,0), (0,0), 200
         repetitionActions, directionDepart = False, "Bas"
         listeActions = ["Gauche","Gauche","VHaut2500","Gauche","Haut","Haut","Droite","VDroite2500","Gauche","Gauche","Gauche","Gauche","Gauche","Gauche","VGauche2500", "Haut", "Droite","VBas2500","Haut","Haut","Haut","Haut"]
-        super().__init__(jeu, gestionnaire, "Mere", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, dureeDeplacement=dureeDeplacement)
+        super().__init__(jeu, gestionnaire, "Mere", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement)
 
     def _gererEtape(self):
         if self._etapeTraitement == 1:
@@ -236,10 +236,10 @@ class Mere(PNJ):
 class Scholar(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 2, 29, 2
-        fichier, couleurTransparente, persoCharset, dureeDeplacement = "Savant.png", (0,0,0), (0,0), 300
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Savant.png", (0,0,0), (0,0), 120
         self._annonceProjet = False
         repetitionActions, directionDepart, intelligence, poseDepart, listeActions = False, "Bas", True, False, []
-        super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, dureeDeplacement=dureeDeplacement, intelligence=intelligence, poseDepart=poseDepart)
+        super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence, poseDepart=poseDepart)
         self._penseePossible = InterrupteurInverse(self._boiteOutils.penseeAGerer)
 
     def _gererEtape(self):
@@ -300,9 +300,9 @@ class Scholar(PNJ):
 class Scholar2(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 2, 46, 2
-        fichier, couleurTransparente, persoCharset, dureeDeplacement = "Savant.png", (0,0,0), (0,0), 300
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Savant.png", (0,0,0), (0,0), 120
         repetitionActions, directionDepart, intelligence, listeActions = False, "Gauche", True, ["VGauche2500"]
-        super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, dureeDeplacement=dureeDeplacement, intelligence=intelligence)
+        super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence)
         self._penseePossible = InterrupteurInverse(self._boiteOutils.penseeAGerer)
         self._pensee1, self._pensee2, self._pensee3 = False, False, False
 
@@ -354,9 +354,9 @@ class Scholar2(PNJ):
 class Scholar3(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 2, 16, 2
-        fichier, couleurTransparente, persoCharset, dureeDeplacement = "Savant.png", (0,0,0), (0,0), 300
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Savant.png", (0,0,0), (0,0), 120
         repetitionActions, directionDepart, intelligence, listeActions = False, "Gauche", True, []
-        super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, dureeDeplacement=dureeDeplacement, intelligence=intelligence)
+        super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence)
         self._penseePossible = InterrupteurInverse(self._boiteOutils.penseeAGerer)
 
     def _gererEtape(self):
@@ -410,9 +410,9 @@ class Porte(EvenementConcret):
 class Monstre(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 9, 1, 2
-        fichier, couleurTransparente, persoCharset, dureeDeplacement = "YeuxMonstre.png", (0,0,0), (0,0), 300
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "YeuxMonstre.png", (0,0,0), (0,0), 150
         repetitionActions, directionDepart, intelligence, listeActions, poseDepart = False, "Gauche", True, [], False
-        super().__init__(jeu, gestionnaire, "Monstre", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, dureeDeplacement=dureeDeplacement, intelligence=intelligence)
+        super().__init__(jeu, gestionnaire, "Monstre", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence)
         self._penseePossible = InterrupteurInverse(self._boiteOutils.penseeAGerer)
 
     def _gererEtape(self):
