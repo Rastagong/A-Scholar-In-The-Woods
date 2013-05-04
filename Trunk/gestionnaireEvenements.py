@@ -20,9 +20,12 @@ class MonGestionnaireEvenements(GestionnaireEvenements):
         self._evenements["concrets"]["LD26-Ferme"] = OrderedDict()
         self._evenements["concrets"]["LD26-Foret"] = OrderedDict()
         self._evenements["concrets"]["LD26-Fin"] = OrderedDict()
-        #self._evenements["concrets"]["LD26-Ferme"]["Joueur"] = [ Joueur(self._jeu, self, 15, 10, 2, fichier="Anna.png"), (12, 24), "Bas"]
-        self._evenements["concrets"]["LD26-Foret"]["Joueur"] = [ Joueur(self._jeu, self, 0, 45, 2, fichier="Anna.png"), (38,1), "Bas"]
-        #self._evenements["concrets"]["LD26-Fin"]["Joueur"] = [ Joueur(self._jeu, self, 0, 16, 2, fichier="Anna.png"), (0, 16), "Droite"]
+        if NOM_CARTE_LANCEMENT == "LD26-Ferme":
+            self._evenements["concrets"]["LD26-Ferme"]["Joueur"] = [ Joueur(self._jeu, self, 15, 10, 2, fichier="Anna.png"), (12, 24), "Bas"]
+        elif NOM_CARTE_LANCEMENT == "LD26-Foret":
+            self._evenements["concrets"]["LD26-Foret"]["Joueur"] = [ Joueur(self._jeu, self, 0, 45, 2, fichier="Anna.png"), (38,1), "Bas"]
+        elif NOM_CARTE_LANCEMENT == "LD26-Fin":
+            self._evenements["concrets"]["LD26-Fin"]["Joueur"] = [ Joueur(self._jeu, self, 0, 16, 2, fichier="Anna.png"), (0, 16), "Droite"]
         j, self._positionJoueur = self._jeu.joueur, None
         self._xJoueur, self._yJoueur, self._cJoueur, self._directionJoueur, self._appuiValidationJoueur = j.x/32, j.y/32, j.c, j.direction, j.appuiValidation
         self._evenements["abstraits"]["Divers"] = dict()

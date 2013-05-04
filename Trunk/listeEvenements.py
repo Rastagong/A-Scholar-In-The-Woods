@@ -187,7 +187,7 @@ class FleurRouge(EvenementConcret):
 class Mere(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 13, 9, 2
-        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Mother.png", (0,0,0), (0,0), 200
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Mother.png", (0,0,0), (0,0), 150
         repetitionActions, directionDepart = False, "Bas"
         listeActions = ["Gauche","Gauche","VHaut2500","Gauche","Haut","Haut","Droite","VDroite2500","Gauche","Gauche","Gauche","Gauche","Gauche","Gauche","VGauche2500", "Haut", "Droite","VBas2500","Haut","Haut","Haut","Haut"]
         super().__init__(jeu, gestionnaire, "Mere", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement)
@@ -236,7 +236,7 @@ class Mere(PNJ):
 class Scholar(PNJ):
     def __init__(self, jeu, gestionnaire):
         x, y, c = 2, 29, 2
-        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Savant.png", (0,0,0), (0,0), 120
+        fichier, couleurTransparente, persoCharset, vitesseDeplacement = "Savant.png", (0,0,0), (0,0), 150
         self._annonceProjet = False
         repetitionActions, directionDepart, intelligence, poseDepart, listeActions = False, "Bas", True, False, []
         super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence, poseDepart=poseDepart)
