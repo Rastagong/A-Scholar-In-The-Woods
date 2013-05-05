@@ -73,6 +73,7 @@ class Narrateur(Evenement):
                 self._debut = True
                 self._etape = 1
             if self._etape == 1:
+                self._boiteOutils.jouerSon("Birds", "Birds Passage Secret", nombreEcoutes=0, fixe=True, xFixe=42, yFixe=22)
                 self._boiteOutils.ajouterPensee("Hurry up, country girl. I can't stand the wilderness.")
                 self._boiteOutils.ajouterPensee("Neither your tastes, for that matter. Ever heard of minimalism?")
                 self._boiteOutils.ajouterPensee("Of course you haven't... Your \"traditional\" works of art are far poorer.")
