@@ -31,6 +31,7 @@ class MonGestionnaireEvenements(GestionnaireEvenements):
         self._evenements["abstraits"]["Divers"] = dict()
         self._evenements["abstraits"]["Divers"]["Narrateur"] = Narrateur(self._jeu, self)
         self._evenements["abstraits"]["Divers"]["ModulateurMusique"] = ModulateurMusique(self._jeu, self)
+        self._evenements["abstraits"]["Divers"]["AnimateurToucheAction"] = AnimateurToucheAction(self._jeu, self)
         self._evenements["abstraits"]["Divers"]["PanierFleurs"] = PanierFleurs(self._jeu, self)
 
     def chargerEvenements(self, nomCarte):

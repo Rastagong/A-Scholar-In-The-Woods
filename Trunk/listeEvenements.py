@@ -31,12 +31,12 @@ class Narrateur(Evenement):
                 self._etape += 1
             if self._etape == 2 and self._boiteOutils.interrupteurs["TransitionAccueilScholar"].voir() is True and x >= 7 and x <= 16 and y >= 7 and y <= 12:
                 self._boiteOutils.ajouterPensee("And it all started. We had met a scholar from the capital.")
-                Horloge.initialiser(id(self), "Transition", 500)
+                Horloge.initialiser(id(self), "Transition", 300)
                 self._etape += 1
             if self._etape == 3:
                 if Horloge.sonner(id(self),"Transition") is False:
                     self._boiteOutils.ajouterTransformation(True, "Noir", coef=self._coefNoircisseur)
-                    self._coefNoircisseur += 0.5
+                    self._coefNoircisseur += 2
                     self._boiteOutils.mettreToutAChanger()
                 else:
                     self._etape += 1
@@ -284,10 +284,10 @@ class Scholar(PNJ):
                     self._boiteOutils.ajouterPensee("I need you to guide me through the woods.")
                     self._boiteOutils.ajouterPensee("I've got to meet some brilliant artists you've never heard of,")
                     self._boiteOutils.ajouterPensee("far from here, where you've never been. Let's go, now!")
-                if self._annonceProjet is True and self._penseePossible.voir() is True:
-                    self._boiteOutils.interrupteurs["Depart"].activer()
-                    self._finirDeplacementSP()
-                    self._etapeTraitement += 1
+            if self._annonceProjet is True and self._penseePossible.voir() is True:
+                self._boiteOutils.interrupteurs["Depart"].activer()
+                self._finirDeplacementSP()
+                self._etapeTraitement += 1
         if self._etapeTraitement == 10:
             self._finirDeplacementSP()
             self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 2, 29, regardFinal="Bas")
