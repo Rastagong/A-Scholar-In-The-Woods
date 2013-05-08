@@ -310,14 +310,14 @@ class Scholar2(PNJ):
 
     def _gererEtape(self):
         if self._etapeTraitement == 1 and self._deplacementBoucle is False:
-            self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 22, 40, typeTile=[(DOSSIER_RESSOURCES+"TilesetLD26.png", (64, 0, 32, 32))])
+            self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 22, 40, typeTile=[("TilesetLD26.png", (64, 0, 32, 32))])
             self._etapeTraitement += 1
         if self._etapeTraitement == 2 and self._deplacementBoucle is False and self._xTile == 22 and self._yTile == 40:
             self._majInfosJoueur(0)
             if self._joueurProche is True:
                 self._lancerTrajet(self._boiteOutils.regardVersPnj("Joueur", self._xTile, self._yTile), False)
             if self._boiteOutils.interrupteurs["porteOuverte"].voir() is True:
-                self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 1, 29, typeTile=[(DOSSIER_RESSOURCES+"TilesetLD26.png", (64, 0, 32, 32))])
+                self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 1, 29, typeTile=[("TilesetLD26.png", (64, 0, 32, 32))])
                 self._etapeTraitement += 1
         if self._etapeTraitement == 3 and self._xTile == 1 and self._yTile == 29 and self._deplacementBoucle is False:
             self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 5, 23, regardFinal="Bas")
