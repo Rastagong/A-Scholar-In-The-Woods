@@ -1,8 +1,9 @@
 # -*-coding:utf-8 -*
+try: #If needed, the _path module must add the path to the Narro directory to sys.path so that the Narro Engine can be imported as a package
+    import _path
+except:
+    pass
 from constantes import *
-from sys import path as syspath
-if BUILDING_LOCAL:
-    syspath.append(NARRO_ENGINE_PATH)
 from narro.gestionnairevenements import *
 from narro.constantes import *
 from listeEvenements import *
