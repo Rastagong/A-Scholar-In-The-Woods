@@ -6,7 +6,7 @@
   <property name="Nom" value="LD26-Foret"/>
  </properties>
  <tileset firstgid="1" name="Tileset LD26" tilewidth="32" tileheight="32">
-  <image source="TilesetLD26.png" trans="ffffff" width="96" height="800"/>
+  <image source="TilesetLD26.png" width="96" height="800"/>
   <tile id="0">
    <properties>
     <property name="Praticabilite" value="True"/>
@@ -7895,7 +7895,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Tile Layer 4" width="50" height="50" visible="0">
+ <layer name="Tile Layer 4" width="50" height="50">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
