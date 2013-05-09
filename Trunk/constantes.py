@@ -3,7 +3,7 @@
 import pygame
 from pygame.locals import *
 
-NOM_CARTE_LANCEMENT = "LD26-Foret"
+NOM_CARTE_LANCEMENT = "LD26-Fin"
 DOSSIER_RESSOURCES = "Ressources"
 
 FENETRE = dict()
@@ -17,8 +17,10 @@ FENETRE["titreFenetre"] = "A Scholar In The Woods"
 FENETRE["flagsFenetre"] = DOUBLEBUF#|FULLSCREEN|HWSURFACE
 FENETRE["forceDirectX"] = False
 
+VITESSE_PENSEE_PAR_DEFAUT = 40
+TEMPS_LECTURE_PENSEE = 2000
 
 VITESSE_DEPLACEMENT_JOUEUR_PAR_DEFAUT = 170
-LIMITER_FPS = False
+LIMITER_FPS = True
 NOMBRE_MAX_DE_FPS = 60
 

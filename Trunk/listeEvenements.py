@@ -103,16 +103,15 @@ class Narrateur(Evenement):
                 self._boiteOutils.ajouterPensee("What is this place? It looks dismal, wild and scary. Just like you.")
                 self._boiteOutils.ajouterPensee("- It's a sanctuary, Sir. For our Gods.")
                 self._boiteOutils.ajouterPensee("- Of course. I had forgotten how naive you are.")
-                self._boiteOutils.ajouterPensee("- You shouldn't offense them.")
-                self._boiteOutils.ajouterPensee("- Duh! Your \"Gods\" are an instrument of power that some men use to contr…")
-                self._boiteOutils.ajouterPensee("What was that?")
-                self._boiteOutils.ajouterPensee("There are no monsters around here, right, country girl?")
-                Horloge.initialiser(id(self), "Monstre", 19000)
+                self._boiteOutils.ajouterPensee("- You shouldn't offend them.")
+                self._boiteOutils.ajouterPensee("- Duh! Your \"Gods\" are an instrument of power that some men use to contr…", nom="Attaque")
+                self._boiteOutils.ajouterPensee("What was that?", tempsLecture=700)
+                self._boiteOutils.ajouterPensee("There are no monsters around here, right, country gi...?")
                 self._etape += 1
-            if self._etape == 2 and Horloge.sonner(id(self), "Monstre") is True:
+            if self._etape == 2 and self._boiteOutils.getNomPensee() == "Attaque" and self._boiteOutils.getMotPenseeActuelle() == 59:
                 self._coefNoircisseur = 0
                 self._boiteOutils.ajouterTransformation(True,"Noir", coef=self._coefNoircisseur)
-                Horloge.initialiser(id(self),"Transi", 500)
+                Horloge.initialiser(id(self),"Transi", 800)
                 self._etape += 1
             if self._etape == 3:
                 self._coefNoircisseur += 0.5
@@ -414,17 +413,16 @@ class Monstre(PNJ):
         x, y, c = 9, 1, 2
         fichier, couleurTransparente, persoCharset, vitesseDeplacement = "YeuxMonstre.png", (0,0,0), (0,0), 150
         repetitionActions, directionDepart, intelligence, listeActions, poseDepart = False, "Gauche", True, [], False
-        super().__init__(jeu, gestionnaire, "Monstre", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence)
+        super().__init__(jeu, gestionnaire, "Monstre", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence, poseDepart=poseDepart)
         self._penseePossible = InterrupteurInverse(self._boiteOutils.penseeAGerer)
 
     def _gererEtape(self):
-        if self._etapeTraitement == 1 and self._boiteOutils.interrupteurs["MonstreApparition"].voir() is True:
+        if self._etapeTraitement == 0 and self._boiteOutils.interrupteurs["MonstreApparition"].voir() is True:
             self._poseDepart = True
-            self._etapeTraitement += 1
-        if self._etapeTraitement == 2 and self._etapeMarche == 1:
+        if self._etapeTraitement == 1 and self._etapeMarche == 1:
             self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 9, 7, arretAvant=True)
             self._boiteOutils.jouerSon("Bete","Bete")
             self._etapeTraitement += 1
-        if self._etapeTraitement == 3 and self._deplacementBoucle is False and self._boiteOutils.positionProcheEvenement(self._xTile, self._yTile, "Scholar") is True:
+        if self._etapeTraitement == 2 and self._deplacementBoucle is False and self._boiteOutils.positionProcheEvenement(self._xTile, self._yTile, "Scholar") is True:
             self._boiteOutils.interrupteurs["MonstreDisparu"].activer()
             self._etapeTraitement += 1
