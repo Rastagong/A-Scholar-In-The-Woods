@@ -10,6 +10,7 @@ from narro.interrupteur import *
 from narro.evenementConcret import *
 from narro.pnj import *
 from narro.constantes import *
+from narro import directions
 
 class Narrateur(Evenement):
     def __init__(self, jeu, gestionnaire):
@@ -32,12 +33,12 @@ class Narrateur(Evenement):
                 self._etape += 1
             if self._etape == 2 and self._boiteOutils.interrupteurs["TransitionAccueilScholar"].voir() is True and x >= 7 and x <= 16 and y >= 7 and y <= 12:
                 self._boiteOutils.ajouterPensee("And it all started. We had met a scholar from the capital.")
-                Horloge.initialiser(id(self), "Transition", 300)
+                Horloge.initialiser(id(self), "Transition", 800)
                 self._etape += 1
             if self._etape == 3:
                 if Horloge.sonner(id(self),"Transition") is False:
                     self._boiteOutils.ajouterTransformation(True, "Noir", coef=self._coefNoircisseur)
-                    self._coefNoircisseur += 2
+                    self._coefNoircisseur += 0.5
                     self._boiteOutils.mettreToutAChanger()
                 else:
                     self._etape += 1
@@ -305,7 +306,7 @@ class Scholar2(PNJ):
         repetitionActions, directionDepart, intelligence, listeActions = False, "Gauche", True, ["VGauche2500"]
         super().__init__(jeu, gestionnaire, "Scholar", x, y, c, fichier, couleurTransparente, persoCharset, repetitionActions, listeActions, directionDepart=directionDepart, vitesseDeplacement=vitesseDeplacement, intelligence=intelligence)
         self._penseePossible = InterrupteurInverse(self._boiteOutils.penseeAGerer)
-        self._pensee1, self._pensee2, self._pensee3 = False, False, False
+        self._pensee1, self._pensee2, self._pensee3, self._coince = False, False, False, False
 
     def _gererEtape(self):
         if self._etapeTraitement == 1 and self._deplacementBoucle is False:
@@ -326,10 +327,10 @@ class Scholar2(PNJ):
             self._etapeTraitement += 1
         if self._etapeTraitement == 5:
             self._majInfosJoueur()
-            if self._joueurBouge[0] is True and self._etapeMarche == 1:
+            if self._joueurBouge[0] is True and self._etapeMarche == 1 and (not self._coince):
                 self._finirDeplacementSP()
                 self._lancerTrajetEtoile(self._boiteOutils.cheminVersJoueur, self._xTile, self._yTile, self._c)
-            elif self._joueurBouge[0] is False and self._joueurProche is False and self._etapeMarche == 1 and self._deplacementBoucle is False:
+            elif self._joueurBouge[0] is False and self._joueurProche is False and self._etapeMarche == 1 and self._deplacementBoucle is False and (not self._coince):
                 self._finirDeplacementSP()
                 self._lancerTrajetEtoile(self._boiteOutils.cheminVersJoueur, self._xTile, self._yTile, self._c)
             if self._xJoueur[0] >= 17 and self._xJoueur[0] <= 26 and self._yJoueur[0] >= 24 and self._yJoueur[0] <= 30 and self._pensee1 is False:
@@ -345,12 +346,20 @@ class Scholar2(PNJ):
                 self._pensee3 = True
                 self._boiteOutils.ajouterPensee("You found our way out, once again! I'm impressed.")
                 self._boiteOutils.ajouterPensee("Now, Let's get out of here. I hate these woods.")
+            if Horloge.sonner(id(self), "Coince"):
+                self._coince = False
 
     def _onJoueurInteractionQuelconque(self, x, y, c, direction):
         if self._penseePossible.voir() is True and self._boiteOutils.interrupteurs["panneauLu"].voir() is True and self._boiteOutils.interrupteurs["porteOuverte"].voir() is False:
             self._boiteOutils.ajouterPensee("What? An enigma? Hm, let me check in my books...")
             self._boiteOutils.ajouterPensee("I've always been fascinated by the love of storytelling among poor men.")
             self._boiteOutils.ajouterPensee("Tell them a story, and they will be happy for the day. Fascinating.")
+        if self._etapeTraitement == 5 and directions.directionContraire(direction) == self._directionRegard:
+            self._finirDeplacementSP()
+            self._lancerTrajetEtoile(self._boiteOutils.cheminVersPosition, self._xTile, self._yTile, self._c, 37, 26)
+            self._coince = True
+            Horloge.initialiser(id(self), "Coince", 3000)
+
 
 class Scholar3(PNJ):
     def __init__(self, jeu, gestionnaire):

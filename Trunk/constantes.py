@@ -3,7 +3,7 @@
 import pygame
 from pygame.locals import *
 
-NOM_CARTE_LANCEMENT = "LD26-Fin"
+NOM_CARTE_LANCEMENT = "LD26-Foret"
 DOSSIER_RESSOURCES = "Ressources"
 
 FENETRE = dict()
