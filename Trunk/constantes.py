@@ -3,7 +3,7 @@
 import pygame
 from pygame.locals import *
 
-NOM_CARTE_LANCEMENT = "LD26-Foret"
+NOM_CARTE_LANCEMENT = "LD26-Ferme"
 DOSSIER_RESSOURCES = "Ressources"
 
 FENETRE = dict()
@@ -20,7 +20,9 @@ FENETRE["forceDirectX"] = False
 VITESSE_PENSEE_PAR_DEFAUT = 40
 TEMPS_LECTURE_PENSEE = 2000
 
+FICHIER_ICONE = "Narro.ico"
+
 VITESSE_DEPLACEMENT_JOUEUR_PAR_DEFAUT = 170
-LIMITER_FPS = True
+LIMITER_FPS = False
 NOMBRE_MAX_DE_FPS = 60
 
