@@ -1,4 +1,4 @@
-# -*-coding:iso-8859-1 -*
+# -*-coding:utf-8 -*
 import pygame, configparser,sys
 from pygame.locals import *
 from constantes import *
@@ -9,10 +9,10 @@ if SESSION_DEBUG:
     import pdb
 
 class Jeu:
-    """Classe contenant l'intégralité du jeu"""
+    """Classe contenant l'intÃ©gralitÃ© du jeu"""
     
-    ##Méthodes privées
-    ##Classées par ordre d'appel dans le code
+    ##MÃ©thodes privÃ©es
+    ##ClassÃ©es par ordre d'appel dans le code
     def _initialiserTout(self):
         """Initialise le moteur"""
         self._initialiserAffichage(**FENETRE)
@@ -21,7 +21,7 @@ class Jeu:
         self._gestionnaireEvenements.initialiserBoiteOutils()
 
     def _initialiserAffichage(self, messageErreurInitialisationPygame, messageErreurInitialisationFenetre, longueurFenetre, largeurFenetre, largeurFenetreReelle, couleurFenetre, titreFenetre, flagsFenetre=0):
-        """Initialise Pygame et la fenêtre"""
+        """Initialise Pygame et la fenÃªtre"""
         try:
             pygame.init()
         except pygame.error:
@@ -42,13 +42,13 @@ class Jeu:
         pygame.mixer.init()
 
     def _chargerCarteAExecuter(self):
-        """Charge en mémoire la carte à exécuter"""
-        """if self._carteAExecuter not in self._cartes.keys(): #Si la carte n'a pas encore été initialisée, on l'initialise
+        """Charge en mÃ©moire la carte Ã  exÃ©cuter"""
+        """if self._carteAExecuter not in self._cartes.keys(): #Si la carte n'a pas encore Ã©tÃ© initialisÃ©e, on l'initialise
             cheminFichierCarte = DOSSIER_RESSOURCES + self._carteAExecuter + EXTENSION_FICHIER_CARTE
             config = configparser.ConfigParser()
             config.read(cheminFichierCarte)
             self._cartes[self._carteAExecuter] = Carte(config, self)"""
-        if self._premiereCarteChargee is True: #Il y a une carte précédente, on enlève toutes ses transformations (dont les transitions) 
+        if self._premiereCarteChargee is True: #Il y a une carte prÃ©cÃ©dente, on enlÃ¨ve toutes ses transformations (dont les transitions) 
             """del self._carteActuelle.transformationsGlobales[:]
             del self._carteActuelle.transformationsParties[:]
             self._carteActuelle.mettreToutAChanger()"""
@@ -75,10 +75,10 @@ class Jeu:
     def _verifierSiLeJeuEstFini(self):
         return (self._event.type == QUIT) or (self._event.type == KEYDOWN and self._event.dict["key"] == K_ESCAPE)
 
-    ##Méthodes publiques
+    ##MÃ©thodes publiques
     #
     def executer(self):
-        """Exécute le jeu"""
+        """ExÃ©cute le jeu"""
         self._initialiserTout()
         self._jeuFini, self._carteAExecuter, self._changementCarte, self._cartes = False, str(NOM_CARTE_LANCEMENT), False, dict()
         self._horlogeFps, self._premiereCarteChargee, self._dicoSurfaces = pygame.time.Clock(), False, dict()
@@ -109,7 +109,7 @@ class Jeu:
         return self._fenetre
 
     def _getJeuFini(self):
-        """Accesseur retournant le booléen <jeuFini>, qui vaut True si le joueur veut quitter le jeu"""
+        """Accesseur retournant le boolÃ©en <jeuFini>, qui vaut True si le joueur veut quitter le jeu"""
         return self._jeuFini
 
     def _getCarteActuelle(self):
@@ -117,7 +117,7 @@ class Jeu:
         return self._carteActuelle
 
     def _getCarteAExecuter(self):
-        """Accesseur retournant le <str> <carteAExecuter>, qui contient le nom de la carte en cours d'exécution"""
+        """Accesseur retournant le <str> <carteAExecuter>, qui contient le nom de la carte en cours d'exÃ©cution"""
         return self._carteAExecuter
 
     def _getZonePensee(self):
@@ -151,7 +151,7 @@ class Jeu:
             self._carteAExecuter = nouvelleCarteAExecuter
 
     def _setChangementCarte(self, nouveauChangementCarte):
-        if nouveauChangementCarte is True or nouveauChangementCarte is False: #Si <nouveauChangementCarte> est bien un booléen
+        if nouveauChangementCarte is True or nouveauChangementCarte is False: #Si <nouveauChangementCarte> est bien un boolÃ©en
             self._changementCarte = nouveauChangementCarte
         else:
             print(MESSAGE_ERREUR_MUTATION_CHANGEMENT_CARTE)
