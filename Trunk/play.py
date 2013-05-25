@@ -1,4 +1,4 @@
-# -*-coding:iso-8859-1 -*
+# -*-coding:utf-8 -*
 try: #If needed, the _path module must add the path to the Narro directory to sys.path so that the Narro Engine can be imported as a package
     import _path
 except:
